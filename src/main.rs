@@ -1,10 +1,31 @@
 use std::io;
 
-
 fn main() {
-    const DEEZ_NUTS: u32 = 56;
-    let x: u32 = 5;
-    let x: i32 = 4;
-    println!("{x}");
-    println!("{DEEZ_NUTS}");
+    let a = [1, 2, 3, 4, 5];
+
+    loop{
+        println!("Please enter an array index.");
+
+        let mut index = String::new();
+    
+        io::stdin()
+            .read_line(&mut index)
+            .expect("Failed to read line");
+    
+        let index: usize = index
+            .trim()
+            .parse()
+            .expect("Index entered was not a number");
+        
+        if index > 4
+        {
+            println!("Index should be more than 0 and less than 4");
+            break;
+        }
+
+        let element = a[index];
+    
+        println!("The value of the element at index {index} is: {element}");
+    }
+    
 }
