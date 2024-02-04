@@ -2,21 +2,29 @@ use std::io;
 
 fn main()
 {
-    let mut input: String; //fahrenheit input
-    let mut result: u32 = 0;
-
+    
     println!("Input Fahrenheit temp:");
-    while input != "exit"
+     loop
     {
+        let mut _input: String = String::new();
+        let mut _result: f32;
+
         io::stdin()
-            .read_line(&mut input)
+            .read_line(&mut _input)
             .expect("Input a number or type exit");
+
+        if _input == "exit"
+        {
+            break;
+        } else 
+        {
+        let _input: f32 = _input.trim().parse().expect("deez"); // 10/10 debugging method
+        let _result: f32 = (_input - 32.0) * 1.8;
+        let _result = _result.floor();
+
+        println!("celsius temp is {_result}");
+        }
         
-        let input: u32 = input.trim().parse().expect("deez");
-
-        let result: u32 = ((32 * input) * 5/9);
-
-        println!("celsius temp is {result}");
     }
 
     println!("good bye");
