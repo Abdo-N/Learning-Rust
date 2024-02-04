@@ -1,31 +1,24 @@
 use std::io;
 
-fn main() {
-    let a = [1, 2, 3, 4, 5];
+fn main()
+{
+    let mut input: String; //fahrenheit input
+    let mut result: u32 = 0;
 
-    loop{
-        println!("Please enter an array index.");
-
-        let mut index = String::new();
-    
+    println!("Input Fahrenheit temp:");
+    while input != "exit"
+    {
         io::stdin()
-            .read_line(&mut index)
-            .expect("Failed to read line");
-    
-        let index: usize = index
-            .trim()
-            .parse()
-            .expect("Index entered was not a number");
+            .read_line(&mut input)
+            .expect("Input a number or type exit");
         
-        if index > 4
-        {
-            println!("Index should be more than 0 and less than 4");
-            break;
-        }
+        let input: u32 = input.trim().parse().expect("deez");
 
-        let element = a[index];
-    
-        println!("The value of the element at index {index} is: {element}");
+        let result: u32 = ((32 * input) * 5/9);
+
+        println!("celsius temp is {result}");
     }
+
+    println!("good bye");
     
 }
